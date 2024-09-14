@@ -2,14 +2,13 @@ import whois
 import requests
 from colorama import init, Fore, Style
 
-# Initialize colorama
+
 init(autoreset=True)
 
-# API keys
-VIRUSTOTAL_API_KEY = '63c5a9d0397f4b7ed86666a631ba87b627c33267999ed02357686644d416493d'
-ABUSEIPDB_API_KEY = '2e433dc0ecfdc22ec11b0a58c7c71e9531b46c608e70ae4bc4feff18905455c8abbe047bc6797297'
 
-# Logo
+VIRUSTOTAL_API_KEY = 'YOUR_API'
+ABUSEIPDB_API_KEY = 'YOUR_API'
+
 def print_logo():
     logo = f"""
 {Fore.CYAN}{Style.BRIGHT}
@@ -52,13 +51,13 @@ def threat_intel_check(domain):
     response = requests.get(url, params=params)
     return response.json()
 
-# Function to save result to a file
+
 def save_to_file(data, filename="threat_intelligence_report.txt"):
     with open(filename, 'w') as file:
         file.write(data)
     print(f"{Fore.GREEN}The report has been saved to {filename}")
 
-# Main Function
+
 def main():
     print_logo()
     print(f"{Fore.GREEN}Welcome to the {Fore.YELLOW}GC-SCAN {Fore.GREEN}Tool")
@@ -89,7 +88,7 @@ def main():
             print(f"\n{Fore.YELLOW}Threat Intelligence Report:")
             print(threat_intel)
 
-            # Ask if the user wants to save the result
+            
             save_option = input(f"{Fore.CYAN}Would you like to save the report to a file? (yes/no): {Fore.RESET}").strip().lower()
             if save_option == 'yes':
                 file_name = input(f"{Fore.GREEN}Enter the file name (default: threat_intelligence_report.txt): {Fore.RESET}").strip()
